@@ -122,3 +122,5 @@ Aggregations that evaluate across the full table and power the KPI cards.
 ---
 
 *Built as part of a data analytics portfolio project demonstrating Power BI, DAX, and data storytelling competency.*
+> All figures reflect reported crimes only. Unreported incidents and 
+> 2023 data lag may affect year-on-year comparisons.
