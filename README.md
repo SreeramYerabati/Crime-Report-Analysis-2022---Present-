@@ -48,26 +48,38 @@ This project transforms raw crime incident data from the Los Angeles Police Depa
 
 ---
 
-## DAX Measures Used
+## DAX Implementation
 
-```dax
--- Total Crime Reports
-Total Crime Reports = COUNTROWS('Crime_Data')
+### Calculated Columns
+New columns added to the dataset to support filtering, grouping, and time intelligence.
 
--- Average Victim Age (excluding nulls/invalid)
-Avg Age of Victim = CALCULATE(AVERAGE('Crime_Data'[Vict Age]), 'Crime_Data'[Vict Age] > 0)
+| Column | Formula | Purpose |
+|---|---|---|
+| `Victim Gender` | `IF([Vict Gender]="M","Male",IF([Vict Gender]="F","Female","Unknown"))` | Maps raw gender codes to readable labels |
+| `Crime Date` | `DATEVALUE([DATE OCC])` | Converts text date to date type — required for time functions |
+| `Crime Year` | `YEAR([DATE OCC])` | Extracts year for trend analysis and year slicer |
+| `Crime Type` | `[Crm Cd Desc]` | Aliases crime description column for cleaner visual labels |
+| `Day Name` | `FORMAT([Crime Date], "dddd")` | Derives full day name (e.g. Monday) from Crime Date |
+| `Week Type` | `IF(WEEKDAY([Crime Date], 2) >= 6, "WeekEnd", "WeekDay")` | Classifies each record as weekday or weekend using ISO mode 2 (Mon=1…Sun=7) |
 
--- Male Victim Count
-Male Victims = CALCULATE(COUNTROWS('Crime_Data'), 'Crime_Data'[Vict Sex] = "M")
+### Measures
+Aggregations that evaluate across the full table and power the KPI cards.
 
--- Female Victim Count
-Female Victims = CALCULATE(COUNTROWS('Crime_Data'), 'Crime_Data'[Vict Sex] = "F")
+| Measure | Formula | Purpose |
+|---|---|---|
+| `Total Crimes` | `COUNTROWS('Crime_data_2022-Present')` | Total reported incidents — COUNTROWS() used over COUNT() to handle text-format report IDs |
+| `No_Of_Male` | `CALCULATE(COUNTROWS(...), [Victim Gender] = "Male")` | Count of male victims, filtered on the calculated column |
+| `No_Of_Female` | `CALCULATE(COUNTROWS(...), [Victim Gender] = "Female")` | Count of female victims, filtered on the calculated column |
+| `Avg AGE` | `CALCULATE(AVERAGE([Vict Age]), [Vict Age] > 0)` | Average victim age, excluding zero/null entries |
 
--- Week Type Classification
-Week Type = IF(WEEKDAY('Crime_Data'[DATE OCC], 2) >= 6, "Weekend", "Weekday")
+### Column Dependency Chain
 ```
-
----
+[DATE OCC]    → Crime Date → Day Name
+                           → Week Type
+[Vict Gender] → Victim Gender → No_Of_Male
+                              → No_Of_Female
+[Vict Age]    → Avg AGE (filtered measure)
+```---
 
 ## Data Cleaning Steps
 
