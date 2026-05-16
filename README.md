@@ -79,7 +79,8 @@ Aggregations that evaluate across the full table and power the KPI cards.
 [Vict Gender] → Victim Gender → No_Of_Male
                               → No_Of_Female
 [Vict Age]    → Avg AGE (filtered measure)
-```---
+```
+---
 
 ## Data Cleaning Steps
 
