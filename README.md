@@ -117,7 +117,7 @@ Aggregations that evaluate across the full table and power the KPI cards.
 
 ## Dataset Source
 
-[Crime Data from 2020 to Present — LA Open Data](https://data.lacity.org/)
+[Crime Data from 2020 to Present — LA Open Data](Crime_Data_from_2020_to_Present.zip)
 
 ---
 
