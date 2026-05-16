@@ -1,0 +1,39 @@
+Dataset Explanation:
+
+DR_NO - This column likely represents the Report Number.
+
+Date Rptd - This column indicates the date when the crime was reported to the authorities.
+
+DATE OCC - This column represents the date on which the crime actually occurred.
+
+AREA CODE - This column represents the Area Code. In the context of crime reports.
+
+AREA NAME - This column contains the name or label of the specific area where the crime occurred.
+
+Rpt Dist No - This column likely refers to the Report District Number.
+
+Crm Cd - This column represents the Crime Code.
+
+Crm Desc - This column contains the description of the crime corresponding to the Crime Code.
+
+Vict Age- This column represents the age of the victim involved in the reported crime.
+
+Vict Gender - This column indicates the gender of the victim.(F - Female, M - Male, X - Unknow)
+
+Vict Descent - This column denotes the ethnic or racial descent of the victim.
+    
+(Descent Code: A - Other Asian, B - Black, C - Chinese, D - Cambodian, F - Filipino, G - Guamanian, H - Hispanic/Latin/Mexican, I - American Indian/Alaskan Native, J - Japanese, K - Korean, L - Laotian, O - Other, P - Pacific Islander, S - Samoan, U - Hawaiian, V - Vietnamese, W - White, X - Unknown, Z - Asian Indian)
+
+Premis Cd - This column represents the Premises Code. It indicates the numerical code assigned to describe the type of location where the crime occurred, such as a residence, commercial establishment, or public area.
+
+Premis Desc - This column contains the description or name of the premises corresponding to the Premises Code.
+
+Weapon Used Cd - This column represents the Weapon Used Code. It denotes the numerical code assigned to describe the type of weapon, if any, used in the commission of the crime.
+
+Weapon Desc - This column contains the description or name of the weapon corresponding to the Weapon Used Code.
+
+Status - This column represents the Status of the crime report.
+
+Status Desc - This column contains the description or name of the status corresponding to the Status Code.
+
+LOCATION - This column represents the specific location or address where the crime occurred.
